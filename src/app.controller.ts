@@ -6,8 +6,14 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello() {
-    const result = this.appService.fetchPopularMoviesAndPoster();
+  getMovieData() {
+    const result = this.appService.getPopularMoviesAndPoster();
     return result;
+  }
+
+  @Get('delete')
+  deleteCache() {
+    this.appService.deleteCache();
+    return 'delete cache';
   }
 }
